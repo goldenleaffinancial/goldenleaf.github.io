@@ -7,10 +7,30 @@
 <meta name="description" content="Golden Leaf Financial — Bookkeeping & Fractional Controller for Small Businesses." />
 <style>
   :root{
-    --bg:#0b0b0b; --panel:#111; --text:#f5f5f5; --muted:#c9c9c9;
-    --gold:#D4AF37; --gold-2:#E0C469; --orange:#D97706; --brown:#3a2a16; --accent:#f59e0b;
-    --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35); --max:1100px;
-    --nav-h:64px;  /* << sticky nav height for anchor offset */
+  /* was 64px */
+  --nav-h: 72px;           /* actual sticky nav height */
+}
+
+/* sections: more breathing room + anchor offset */
+section{
+  padding: 84px 0;         /* was ~72px */
+  scroll-margin-top: calc(var(--nav-h) + 56px);
+}
+
+/* make sure key anchors never hide under the nav */
+#services, #contact, .about, .faq{
+  scroll-margin-top: calc(var(--nav-h) + 64px);
+}
+
+/* add a subtle divider so blocks don't visually collide */
+section + section{
+  border-top: 1px solid rgba(212,175,55,.14);
+}
+
+/* a touch more space below the process list */
+.step{ margin-bottom: 0 }              /* keep steps tight */
+section.container:last-of-type{padding-bottom: 92px}
+
   }
 
   *{box-sizing:border-box}
