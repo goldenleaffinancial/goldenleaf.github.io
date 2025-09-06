@@ -1,0 +1,1 @@
+console.log('Golden Leaf site loaded');
