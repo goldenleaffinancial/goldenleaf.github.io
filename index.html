@@ -7,38 +7,31 @@
 <meta name="description" content="Golden Leaf Financial — Bookkeeping & Fractional Controller for Small Businesses." />
 <style>
   :root{
-  /* was 64px */
-  --nav-h: 72px;           /* actual sticky nav height */
-}
-
-/* sections: more breathing room + anchor offset */
-section{
-  padding: 84px 0;         /* was ~72px */
-  scroll-margin-top: calc(var(--nav-h) + 56px);
-}
-
-/* make sure key anchors never hide under the nav */
-#services, #contact, .about, .faq{
-  scroll-margin-top: calc(var(--nav-h) + 64px);
-}
-
-/* add a subtle divider so blocks don't visually collide */
-section + section{
-  border-top: 1px solid rgba(212,175,55,.14);
-}
-
-/* a touch more space below the process list */
-.step{ margin-bottom: 0 }              /* keep steps tight */
-section.container:last-of-type{padding-bottom: 92px}
-
+    --bg:#0b0b0b; --panel:#111; --text:#f5f5f5; --muted:#c9c9c9;
+    --gold:#D4AF37; --gold-2:#E0C469; --orange:#D97706; --brown:#3a2a16; --accent:#f59e0b;
+    --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35); --max:1100px;
+    /* ↑↑ key fix: true sticky height for anchor offset */
+    --nav-h:72px;
   }
 
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
 
   .container{max-width:var(--max);margin:0 auto;padding:0 22px}
-  section{padding:72px 0;scroll-margin-top:calc(var(--nav-h) + 18px);} /* << anchors stop below nav */
+
+  /* ↑↑ key fix: larger padding + larger scroll offset */
+  section{
+    padding:84px 0;
+    scroll-margin-top:calc(var(--nav-h) + 56px);
+  }
+  /* make the main anchors even safer */
+  #services, #contact, .about, .faq{
+    scroll-margin-top:calc(var(--nav-h) + 64px);
+  }
+  /* visual separation between sections */
+  section + section{border-top:1px solid rgba(212,175,55,.14)}
 
   h1,h2,h3{margin:0 0 12px;line-height:1.15}
   p{margin:0 0 12px;color:var(--muted)}
@@ -62,7 +55,8 @@ section.container:last-of-type{padding-bottom: 92px}
          radial-gradient(60rem 60rem at -10% -20%, rgba(212,175,55,.14), transparent 50%),
          radial-gradient(50rem 50rem at 110% -10%, rgba(217,119,6,.18), transparent 55%),
          linear-gradient(180deg, #0b0b0b 0%, #111 100%);}
-  .hero .container{display:grid;gap:16px;padding:92px 22px 76px}
+  /* ↑↑ key fix: more bottom padding so scrolling lands nicer */
+  .hero .container{display:grid;gap:16px;padding:96px 22px 88px}
   .kicker{color:var(--gold);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.76rem}
   .hero h1{font-size:clamp(32px, 5vw, 56px)}
   .hero p{font-size:1.08rem;max-width:800px}
@@ -79,9 +73,9 @@ section.container:last-of-type{padding-bottom: 92px}
 
   .card{
     background:linear-gradient(180deg, #141414, #0f0f0f);
-    border:1.5px solid rgba(212,175,55,.20);  /* thicker, cleaner line */
+    border:1.5px solid rgba(212,175,55,.20);
     border-radius:var(--radius);
-    padding:24px;                              /* more breathing room */
+    padding:24px;
     box-shadow:var(--shadow);
     position:relative;overflow:hidden;isolation:isolate;
   }
@@ -220,7 +214,6 @@ section.container:last-of-type{padding-bottom: 92px}
 <script>
   // year
   document.getElementById('y').textContent = new Date().getFullYear();
-
   // reveal-on-scroll
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
