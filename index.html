@@ -17,12 +17,24 @@
       <span>Golden Leaf Financial</span>
     </a>
 
-    <div class="nav-links">
-      <a class="cta" href="/index.html" data-route="/">Home</a>
-      <a class="cta" href="/services/starter.html" data-route="/services/starter.html">Starter</a>
-      <a class="cta" href="/services/growth.html" data-route="/services/growth.html">Growth</a>
-      <a class="cta" href="/services/pro.html" data-route="/services/pro.html">Pro</a>
-      <a class="cta" href="/contact.html" data-route="/contact.html">Contact</a>
+    <!-- Menu button (top-right) -->
+    <button class="menu-btn" id="menuButton"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="mainMenu">
+      Menu
+      <svg viewBox="0 0 20 20" aria-hidden="true" class="chev">
+        <path d="M6 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- Dropdown menu -->
+    <div class="menu-panel" id="mainMenu" role="menu">
+      <a class="menu-item" role="menuitem" href="/index.html" data-route="/">Home</a>
+      <a class="menu-item" role="menuitem" href="/services/starter.html" data-route="/services/starter.html">Starter</a>
+      <a class="menu-item" role="menuitem" href="/services/growth.html" data-route="/services/growth.html">Growth</a>
+      <a class="menu-item" role="menuitem" href="/services/pro.html" data-route="/services/pro.html">Pro</a>
+      <a class="menu-item" role="menuitem" href="/contact.html" data-route="/contact.html">Contact</a>
     </div>
   </div>
 </nav>
