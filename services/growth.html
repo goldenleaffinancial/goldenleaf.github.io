@@ -1,66 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- put this first in <head> on every page -->
-  <base href="/" />
-  <link rel="stylesheet" href="styles.css?v=7">
-  <script src="script.js?v=7" defer></script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Growth • Most Popular • Golden Leaf Financial</title>
-  <meta name="description" content="Growth • Most Popular package by Golden Leaf Financial" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Starter • Golden Leaf Financial</title>
+  <base href="/" />
+  <link rel="stylesheet" href="styles.css?v=7" />
+  <script src="script.js?v=7" defer></script>
 </head>
 <body>
-
+  <!-- same nav as index (links like href="services/starter.html") -->
   <nav class="nav">
     <div class="container nav-inner">
-      <div class="brand"><div class="leaf"></div><span>Golden Leaf Financial</span></div>
-      <div style="display:flex;gap:10px">
-        <a class="cta" href="/index.html">Home</a>
-        <a class="cta" href="/services/starter.html">Starter</a>
-        <a class="cta" href="/services/growth.html">Growth</a>
-        <a class="cta" href="/services/pro.html">Pro</a>
-        <a class="cta" href="/contact.html">Contact</a>
+      <a class="brand" href="index.html"><div class="leaf"></div><span>Golden Leaf Financial</span></a>
+      <button class="menu-btn" id="menuButton" aria-haspopup="menu" aria-expanded="false" aria-controls="mainMenu">Menu
+        <svg viewBox="0 0 20 20" class="chev" aria-hidden="true"><path d="M6 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="menu-panel" id="mainMenu" role="menu">
+        <a class="menu-item" href="index.html" data-route="/">Home</a>
+        <a class="menu-item" href="services/starter.html" data-route="/services/starter.html">Starter</a>
+        <a class="menu-item" href="services/growth.html" data-route="/services/growth.html">Growth</a>
+        <a class="menu-item" href="services/pro.html" data-route="/services/pro.html">Pro</a>
+        <a class="menu-item" href="contact.html" data-route="/contact.html">Contact</a>
       </div>
     </div>
   </nav>
 
-<header class="hero">
-  <div class="container">
-    <span class="kicker reveal">Growth • Most Popular</span>
-    <h1 class="reveal">$2,500 / mo</h1>
-    <p class="reveal">Everything you need to get accurate, timely financials and actionable cash insights.</p>
-    <div class="cta-row reveal">
-      <a class="btn btn-primary" href="https://calendly.com/yourlink/30min" target="_blank" rel="noopener">Book a Discovery</a>
-      <a class="btn btn-ghost" href="/index.html#services">Back to Packages</a>
+  <header class="hero">
+    <div class="container">
+      <span class="kicker">Package</span>
+      <h1>Starter</h1>
+      <p>Best for new or simple operations that need clean monthly financials and a steady rhythm.</p>
     </div>
-  </div>
-</header>
+  </header>
 
-<section class="container">
-  <div class="breadcrumbs"><a href="/index.html">Home</a> › <a href="/index.html#services">Packages</a> › Growth • Most Popular</div>
-  <h2 class="reveal">What’s Included</h2>
-  <ul class="reveal">
+  <section class="container">
+    <a class="card reveal" href="services/growth.html" aria-label="Growth package" style="outline:2px solid rgba(212,175,55,.45)">
+  <span class="badge">Growth • Most Popular</span>
+  <div class="price">$2,500 <span class="per">/ mo</span></div>
+  <ul>
     <li>Everything in Starter</li>
-    <li>12-week cash-flow forecast updated weekly</li>
+    <li>12-week cash-flow forecast</li>
     <li>Budget vs. Actuals + KPI dashboard</li>
     <li>Bi-weekly review calls</li>
   </ul>
-</section>
+</a>
 
-<section class="container">
-  <h2 class="reveal">Next Steps</h2>
-  <ol class="reveal">
-    <li>Quick discovery call (15–30 min)</li>
-    <li>Access & kickoff checklist</li>
-    <li>First close within 30 days (or faster on cleanup)</li>
-  </ol>
-</section>
+  </section>
 
-  <footer>
-    <div class="container">© <span data-year></span> Golden Leaf Financial LLC • https://www.goldenleaffinancialllc.com • owner@goldenleaffinancialllc.com</div>
-  </footer>
-  <script src="/script.js"></script>
+  <section class="container">
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://calendly.com/yourlink/30min" target="_blank" rel="noopener">Book a Discovery Call</a>
+      <a class="btn btn-ghost" href="mailto:owner@goldenleaffinancialllc.com">owner@goldenleaffinancialllc.com</a>
+    </div>
+  </section>
 
+  <footer>© <span id="y"></span> Golden Leaf Financial LLC</footer>
 </body>
 </html>
