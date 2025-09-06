@@ -1,58 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Golden Leaf Financial</title>
   <meta name="description" content="Golden Leaf Financial — Bookkeeping & Fractional Controller for Small Businesses." />
-  <!-- in <head> -->
-  <link rel="stylesheet" href="styles.css?v=3" />
-  <script src="script.js?v=3" defer></script>
 
+  <!-- ✅ load CSS (same folder as index.html) -->
+  <link rel="stylesheet" href="styles.css?v=5" />
+
+  <!-- ✅ load JS (same folder as index.html) -->
+  <script src="script.js?v=5" defer></script>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <div class="container nav-inner">
     <a class="brand" href="index.html" aria-label="Home">
-      <div class="leaf" aria-hidden="true"></div>
-      <span>Golden Leaf Financial</span>
+      <div class="leaf"></div><span>Golden Leaf Financial</span>
     </a>
 
-    <!-- Menu button (top-right) -->
-    <button class="menu-btn" id="menuButton"
-            aria-haspopup="menu"
-            aria-expanded="false"
-            aria-controls="mainMenu">
+    <button class="menu-btn" id="menuButton" aria-haspopup="menu" aria-expanded="false" aria-controls="mainMenu">
       Menu
-      <svg viewBox="0 0 20 20" aria-hidden="true" class="chev">
-        <path d="M6 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg viewBox="0 0 20 20" aria-hidden="true" class="chev"><path d="M6 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
 
-    <!-- Dropdown menu -->
     <div class="menu-panel" id="mainMenu" role="menu">
-      <a class="menu-item" role="menuitem" href="index.html" data-route="/">Home</a>
-      <a class="menu-item" role="menuitem" href="services/starter.html" data-route="/services/starter.html">Starter</a>
-      <a class="menu-item" role="menuitem" href="services/growth.html" data-route="/services/growth.html">Growth</a>
-      <a class="menu-item" role="menuitem" href="services/pro.html" data-route="/services/pro.html">Pro</a>
-      <a class="menu-item" role="menuitem" href="contact.html" data-route="/contact.html">Contact</a>
+      <a class="menu-item" href="index.html" data-route="/">Home</a>
+      <a class="menu-item" href="services/starter.html" data-route="/services/starter.html">Starter</a>
+      <a class="menu-item" href="services/growth.html" data-route="/services/growth.html">Growth</a>
+      <a class="menu-item" href="services/pro.html" data-route="/services/pro.html">Pro</a>
+      <a class="menu-item" href="contact.html" data-route="/contact.html">Contact</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
   <div class="container">
     <span class="kicker reveal">Clear books. Clear cash. Clear decisions.</span>
-    <h1 class="reveal">
-      Bookkeeping & <span class="gold">Fractional Controller</span> for Small Biz
-    </h1>
-    <p class="reveal">
-      Get a consistent close by T+10, a living cash-flow view, and lender-ready financials — without hiring a full finance team.
-    </p>
+    <h1 class="reveal">Bookkeeping & <span class="gold">Fractional Controller</span> for Small Biz</h1>
+    <p class="reveal">Get a consistent close by T+10, a living cash-flow view, and lender-ready financials — without hiring a full finance team.</p>
     <div class="cta-row reveal">
       <a class="btn btn-primary" href="https://calendly.com/yourlink/30min" target="_blank" rel="noopener">Book a 30-min Discovery</a>
       <a class="btn btn-ghost" href="#services">See Packages</a>
@@ -60,79 +47,32 @@
   </div>
 </header>
 
-<!-- SERVICES -->
 <section id="services" class="container">
   <h2 class="reveal">Simple, Transparent Packages</h2>
   <div class="grid">
-    <a class="card reveal" href="services/starter.html" aria-label="Starter package">
-      <span class="badge">Starter</span>
-      <div class="price">$1,250 <span class="per">/ mo</span></div>
-      <ul>
-        <li>Monthly close in QBO</li>
-        <li>Bank/CC reconciliations</li>
-        <li>P&L, Balance Sheet, Cash Flow</li>
-        <li>30-min monthly review call</li>
-      </ul>
-    </a>
-
-    <a class="card reveal" href="services/growth.html" aria-label="Growth package" style="outline:2px solid rgba(212,175,55,.45)">
-      <span class="badge">Growth • Most Popular</span>
-      <div class="price">$2,500 <span class="per">/ mo</span></div>
-      <ul>
-        <li>Everything in Starter</li>
-        <li>12-week cash-flow forecast</li>
-        <li>Budget vs. Actuals + KPI dashboard</li>
-        <li>Bi-weekly review calls</li>
-      </ul>
-    </a>
-
-    <a class="card reveal" href="services/pro.html" aria-label="Pro Controller package">
-      <span class="badge">Pro Controller</span>
-      <div class="price">$4,500 <span class="per">/ mo</span></div>
-      <ul>
-        <li>Everything in Growth</li>
-        <li>Light AP/AR oversight</li>
-        <li>Lender package & support</li>
-        <li>Weekly check-ins • priority channel</li>
-      </ul>
-    </a>
+    <a class="card reveal" href="services/starter.html"><span class="badge">Starter</span><div class="price">$1,250 <span class="per">/ mo</span></div></a>
+    <a class="card reveal" href="services/growth.html" style="outline:2px solid rgba(212,175,55,.45)"><span class="badge">Growth • Most Popular</span><div class="price">$2,500 <span class="per">/ mo</span></div></a>
+    <a class="card reveal" href="services/pro.html"><span class="badge">Pro Controller</span><div class="price">$4,500 <span class="per">/ mo</span></div></a>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="container">
-  <h2 class="reveal">How It Works</h2>
-  <div class="grid onecol">
-    <div class="step reveal"><div class="num">1</div><div><b>Discovery</b> — quick call to align on goals and place you in Starter/Growth/Pro.</div></div>
-    <div class="step reveal"><div class="num">2</div><div><b>Cleanup</b> (if needed) — one-time fixed fee to get everything lender-ready.</div></div>
-    <div class="step reveal"><div class="num">3</div><div><b>Monthly Close</b> by T+10 — reconciliations, financials, KPIs.</div></div>
-    <div class="step reveal"><div class="num">4</div><div><b>Decisions</b> — short review call; you leave with next steps and cash clarity.</div></div>
-  </div>
-</section>
-
-<!-- ABOUT -->
 <section class="about">
   <div class="container">
     <h2 class="reveal">Why Golden Leaf?</h2>
-    <p class="reveal">I’m Noah — A&amp;M Accounting grad, 3+ years’ experience (1.5 as Senior Accountant). I help owners stop guessing and start deciding with clean books, real-time cash views, and tight monthly rhythms.</p>
+    <p class="reveal">I’m Noah — A&amp;M Accounting grad, 3+ years’ experience. I help owners stop guessing and start deciding with clean books, real-time cash views, and tight monthly rhythms.</p>
     <p class="reveal note">Not a CPA firm. We provide bookkeeping & controller services and partner with CPAs for tax.</p>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="container">
   <h2 class="reveal">Let’s Get You Cash-Clear</h2>
   <p class="reveal">Grab a time that works for you or send a note — responses within 1 business day.</p>
   <div class="cta-row reveal">
-    <a class="btn btn-primary" href="https://calendly.com/yourlink/30min" target="_blank" rel="noopener">Book a Discovery Call</a>
+    <a class="btn btn-primary" href="https://calendly.com/yourlink/30min" target="_blank">Book a Discovery Call</a>
     <a class="btn btn-ghost" href="mailto:owner@goldenleaffinancialllc.com">owner@goldenleaffinancialllc.com</a>
   </div>
 </section>
 
-<footer>
-  <div class="container">© <span id="y"></span> Golden Leaf Financial LLC • www.goldenleaffinancialllc.com • owner@goldenleaffinancialllc.com</div>
-</footer>
-
-<script src="script.js" defer></script>
+<footer>© <span id="y"></span> Golden Leaf Financial LLC</footer>
 </body>
 </html>
