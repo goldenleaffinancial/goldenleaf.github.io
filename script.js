@@ -1,8 +1,5 @@
 // === Footer Year ===
-const yearSpan = document.getElementById('y');
-if (yearSpan) {
-  yearSpan.textContent = new Date().getFullYear();
-}
+document.getElementById('y').textContent = new Date().getFullYear();
 
 // === Reveal-on-scroll ===
 const observer = new IntersectionObserver((entries) => {
@@ -13,25 +10,20 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.16 });
-
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-// === Dropdown Menu Logic ===
+// === Dropdown menu ===
 const btn = document.getElementById('menuButton');
 const panel = document.getElementById('mainMenu');
 
 function openMenu() {
   panel.classList.add('open');
   btn.setAttribute('aria-expanded', 'true');
-  const first = panel.querySelector('.menu-item');
-  if (first) first.focus();
 }
-
 function closeMenu() {
   panel.classList.remove('open');
   btn.setAttribute('aria-expanded', 'false');
 }
-
 function toggleMenu() {
   const expanded = btn.getAttribute('aria-expanded') === 'true';
   expanded ? closeMenu() : openMenu();
@@ -39,18 +31,16 @@ function toggleMenu() {
 
 if (btn && panel) {
   btn.addEventListener('click', (e) => {
-    e.stopPropagation(); // prevent immediate close
+    e.stopPropagation();
     toggleMenu();
   });
 
-  // Close on click outside
   document.addEventListener('click', (e) => {
     if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== btn) {
       closeMenu();
     }
   });
 
-  // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && panel.classList.contains('open')) {
       closeMenu();
@@ -58,13 +48,11 @@ if (btn && panel) {
   });
 }
 
-// === Highlight Active Route ===
+// === Highlight active menu link ===
 (function markActive() {
   const path = location.pathname.replace(/\/+$/, '') || '/';
   document.querySelectorAll('.menu-item').forEach((a) => {
     const route = (a.getAttribute('data-route') || a.getAttribute('href') || '').replace(/\/+$/, '') || '/';
-    if (route === path) {
-      a.setAttribute('aria-current', 'page');
-    }
+    if (route === path) a.setAttribute('aria-current', 'page');
   });
 })();
