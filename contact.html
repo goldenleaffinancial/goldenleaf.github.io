@@ -2,52 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Contact • Golden Leaf Financial</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <base href="/" />
+  <link rel="stylesheet" href="styles.css?v=7" />
+  <script src="script.js?v=7" defer></script>
 </head>
 <body>
-
+  <!-- nav same as above -->
   <nav class="nav">
     <div class="container nav-inner">
-      <div class="brand"><div class="leaf"></div><span>Golden Leaf Financial</span></div>
-      <div style="display:flex;gap:10px">
-        <a class="cta" href="/index.html">Home</a>
-        <a class="cta" href="/services/starter.html">Starter</a>
-        <a class="cta" href="/services/growth.html">Growth</a>
-        <a class="cta" href="/services/pro.html">Pro</a>
-        <a class="cta" href="/contact.html">Contact</a>
+      <a class="brand" href="index.html"><div class="leaf"></div><span>Golden Leaf Financial</span></a>
+      <button class="menu-btn" id="menuButton" aria-haspopup="menu" aria-expanded="false" aria-controls="mainMenu">Menu
+        <svg viewBox="0 0 20 20" class="chev" aria-hidden="true"><path d="M6 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+      <div class="menu-panel" id="mainMenu" role="menu">
+        <a class="menu-item" href="index.html" data-route="/">Home</a>
+        <a class="menu-item" href="services/starter.html" data-route="/services/starter.html">Starter</a>
+        <a class="menu-item" href="services/growth.html" data-route="/services/growth.html">Growth</a>
+        <a class="menu-item" href="services/pro.html" data-route="/services/pro.html">Pro</a>
+        <a class="menu-item" href="contact.html" data-route="/contact.html">Contact</a>
       </div>
     </div>
   </nav>
 
-<header class="hero">
-  <div class="container">
-    <span class="kicker reveal">Contact</span>
-    <h1 class="reveal">Let's talk</h1>
-    <p class="reveal">Book a call or send a note — responses within 1 business day.</p>
-    <div class="cta-row reveal">
-      <a class="btn btn-primary" href="https://calendly.com/yourlink/30min" target="_blank" rel="noopener">Book on Calendly</a>
+  <header class="hero">
+    <div class="container">
+      <h1>Contact</h1>
+      <p>Responses within 1 business day.</p>
+    </div>
+  </header>
+
+  <section class="container">
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://calendly.com/yourlink/30min" target="_blank" rel="noopener">Book a Discovery Call</a>
       <a class="btn btn-ghost" href="mailto:owner@goldenleaffinancialllc.com">owner@goldenleaffinancialllc.com</a>
     </div>
-  </div>
-</header>
+  </section>
 
-<section class="container">
-  <h2 class="reveal">Message Form</h2>
-  <p class="reveal">This form uses Formspree. Replace the action URL with your own once you create a free endpoint.</p>
-  <form class="reveal" method="POST" action="https://formspree.io/f/yourid" style="display:grid;gap:12px;max-width:560px">
-    <input required name="name" placeholder="Your name" style="padding:12px;border-radius:10px;border:1px solid rgba(212,175,55,.2);background:#111;color:#fff">
-    <input required name="email" type="email" placeholder="Your email" style="padding:12px;border-radius:10px;border:1px solid rgba(212,175,55,.2);background:#111;color:#fff">
-    <textarea required name="message" rows="6" placeholder="How can we help?" style="padding:12px;border-radius:10px;border:1px solid rgba(212,175,55,.2);background:#111;color:#fff"></textarea>
-    <button class="btn btn-primary" type="submit">Send</button>
-  </form>
-</section>
-
-  <footer>
-    <div class="container">© <span data-year></span> Golden Leaf Financial LLC • https://www.goldenleaffinancialllc.com • owner@goldenleaffinancialllc.com</div>
-  </footer>
-  <script src="/script.js"></script>
-
+  <footer>© <span id="y"></span> Golden Leaf Financial LLC</footer>
 </body>
 </html>
