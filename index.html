@@ -2,109 +2,228 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Golden Leaf Financial</title>
+  <meta name="description" content="Golden Leaf Financial — Bookkeeping & Fractional Controller for Small Businesses." />
   <style>
-    body {
-      margin: 0;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      background: #f9fafb;
+    :root{
+      --bg: #0b0b0b;           /* near-black */
+      --panel:#121212;
+      --text:#f5f5f5;
+      --muted:#c9c9c9;
+      --gold:#D4AF37;          /* gold */
+      --gold-2:#E0C469;
+      --orange:#D97706;        /* burnt orange */
+      --brown:#3a2a16;         /* deep brown */
+      --accent:#f59e0b;        /* brighter orange for hovers */
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --max:1100px;
     }
-    header {
-      background: linear-gradient(135deg, #14532d, #22c55e);
-      color: white;
-      padding: 3rem 1rem;
-      text-align: center;
+
+    /* RESET */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    /* GLOBAL */
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    section{padding:64px 0}
+    h1,h2,h3{line-height:1.15;margin:0 0 14px}
+    p{margin:0 0 12px;color:var(--muted)}
+    ul{margin:0;padding-left:18px}
+    li{margin:6px 0}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(11,11,11,.7);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(212,175,55,.15)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px}
+    .leaf{width:22px;height:22px;border-radius:6px;background:conic-gradient(from 210deg, var(--gold), var(--gold-2), var(--gold));box-shadow:0 0 0 1px rgba(212,175,55,.25)}
+    .brand span{font-weight:700;letter-spacing:.3px}
+    .nav a.cta{padding:10px 14px;border:1px solid var(--gold);border-radius:10px;transition:.2s;background:linear-gradient(180deg, rgba(212,175,55,.15), rgba(212,175,55,.03))}
+    .nav a.cta:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(212,175,55,.2)}
+
+    /* HERO */
+    .hero{
+      position:relative;overflow:hidden;
+      background:
+        radial-gradient(60rem 60rem at -10% -20%, rgba(212,175,55,.14), transparent 50%),
+        radial-gradient(50rem 50rem at 110% -10%, rgba(217,119,6,.18), transparent 55%),
+        linear-gradient(180deg, #0b0b0b 0%, #111 100%);
+      border-bottom:1px solid rgba(212,175,55,.15);
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    .hero .container{display:grid;gap:18px;padding:88px 20px 72px}
+    .kicker{color:var(--gold);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.76rem}
+    .hero h1{font-size:clamp(32px, 5vw, 56px)}
+    .hero p{font-size:1.1rem;max-width:800px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .btn{
+      padding:12px 18px;border-radius:12px;font-weight:700;letter-spacing:.2px;cursor:pointer;border:0;transition:.22s;
+      box-shadow:var(--shadow)
     }
-    header p {
-      font-size: 1.2rem;
-      margin: 1rem 0;
+    .btn-primary{background:linear-gradient(180deg, var(--gold), #b99426);color:#111}
+    .btn-primary:hover{filter:saturate(105%) brightness(1.03);transform:translateY(-1px)}
+    .btn-ghost{background:rgba(217,119,6,.14);color:#ffdca8;border:1px solid rgba(217,119,6,.35)}
+    .btn-ghost:hover{background:rgba(217,119,6,.22);transform:translateY(-1px)}
+
+    /* CARDS */
+    .grid{display:grid;gap:18px}
+    @media(min-width:860px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+    .card{
+      background:linear-gradient(180deg, #141414, #0f0f0f);
+      border:1px solid rgba(212,175,55,.16);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
     }
-    .btn {
-      display: inline-block;
-      background: #fff;
-      color: #14532d;
-      padding: 0.75rem 1.25rem;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.2s;
+    .card:before{
+      content:"";
+      position:absolute;inset:-1px -1px auto auto;width:120px;height:120px;
+      background:radial-gradient(70px 70px at 70% 30%, rgba(212,175,55,.35), transparent 60%);
+      filter:blur(20px);opacity:.5;z-index:-1;
     }
-    .btn:hover {
-      background: #d1fae5;
-    }
-    section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    h2 {
-      color: #14532d;
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    footer {
-      background: #14532d;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-    }
+    .price{font-size:1.6rem;color:var(--gold);font-weight:800;margin:6px 0 12px}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.28);color:#ffe9a8;font-size:.8rem;margin-bottom:8px}
+
+    /* PROCESS */
+    .step{display:flex;gap:14px;align-items:flex-start;padding:14px;border:1px solid rgba(212,175,55,.12);border-radius:14px;background:linear-gradient(180deg,#121212,#0e0e0e)}
+    .num{min-width:34px;height:34px;border-radius:8px;background:linear-gradient(180deg, var(--orange), #a95f04);display:grid;place-items:center;font-weight:800}
+
+    /* ABOUT + FAQ + FOOTER */
+    .about{background:linear-gradient(180deg,#0f0f0f,#0b0b0b)}
+    .faq .q{font-weight:800;color:#ffdca8}
+    footer{border-top:1px solid rgba(212,175,55,.18);background:#0a0a0a;padding:26px 0;color:#cfcfcf}
+
+    /* REVEAL ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Golden Leaf Financial</h1>
-    <p>Bookkeeping & Fractional Controller for Small Biz</p>
-    <a href="https://calendly.com/yourlink/30min" class="btn">Book a 30-min Discovery Call</a>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="leaf"></div><span>Golden Leaf Financial</span>
+      </div>
+      <div style="display:flex;gap:10px">
+        <a class="cta" href="#services">Services</a>
+        <a class="cta" href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <span class="kicker reveal">Clear books. Clear cash. Clear decisions.</span>
+      <h1 class="reveal">Bookkeeping & <span style="color:var(--gold)">Fractional Controller</span> for Small Biz</h1>
+      <p class="reveal">Get a fast, consistent close by T+10, a living cash-flow view, and lender-ready financials—without hiring a full finance team.</p>
+      <div class="cta-row reveal">
+        <a class="btn btn-primary" href="https://calendly.com/yourlink/30min" target="_blank" rel="noopener">Book a 30-min Discovery</a>
+        <a class="btn btn-ghost" href="#services">See Packages</a>
+      </div>
+    </div>
   </header>
 
-  <section>
-    <h2>Packages</h2>
-    <ul>
-      <li><b>Starter — $1,250/mo:</b> Monthly close + financials + review call</li>
-      <li><b>Growth — $2,500/mo:</b> Forecasting + budget vs actuals + dashboards + bi-weekly calls</li>
-      <li><b>Pro Controller — $4,500/mo:</b> AP/AR oversight + lender support + weekly calls</li>
-    </ul>
+  <!-- SERVICES -->
+  <section id="services" class="container">
+    <h2 class="reveal">Simple, Transparent Packages</h2>
+    <div class="grid">
+      <div class="card reveal">
+        <span class="badge">Starter</span>
+        <div class="price">$1,250<span style="font-size:.9rem;color:#ffe9a8"> / mo</span></div>
+        <ul>
+          <li>Monthly close in QBO</li>
+          <li>Bank/CC reconciliations</li>
+          <li>P&L, Balance Sheet, Cash Flow</li>
+          <li>30-min monthly review call</li>
+        </ul>
+      </div>
+      <div class="card reveal" style="outline:2px solid rgba(212,175,55,.45)">
+        <span class="badge">Growth • Most Popular</span>
+        <div class="price">$2,500<span style="font-size:.9rem;color:#ffe9a8"> / mo</span></div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>12-week cash-flow forecast</li>
+          <li>Budget vs. Actuals + KPI dashboard</li>
+          <li>Bi-weekly review calls</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="badge">Pro Controller</span>
+        <div class="price">$4,500<span style="font-size:.9rem;color:#ffe9a8"> / mo</span></div>
+        <ul>
+          <li>Everything in Growth</li>
+          <li>Light AP/AR oversight</li>
+          <li>Lender package & support</li>
+          <li>Weekly check-ins • priority channel</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>How It Works</h2>
-    <ol>
-      <li>Discovery Call</li>
-      <li>Cleanup (if needed)</li>
-      <li>Monthly Close by T+10</li>
-      <li>Simple Review Call</li>
-    </ol>
+  <!-- PROCESS -->
+  <section class="container">
+    <h2 class="reveal">How It Works</h2>
+    <div class="grid" style="grid-template-columns:1fr;gap:14px">
+      <div class="step reveal"><div class="num">1</div><div><b>Discovery</b> — quick call to align on goals and place you in Starter/Growth/Pro.</div></div>
+      <div class="step reveal"><div class="num">2</div><div><b>Cleanup</b> (if needed) — one-time fixed fee to get everything lender-ready.</div></div>
+      <div class="step reveal"><div class="num">3</div><div><b>Monthly Close</b> by T+10 — reconciliations, financials, KPIs.</div></div>
+      <div class="step reveal"><div class="num">4</div><div><b>Decisions</b> — short review call; you leave with next steps and cash clarity.</div></div>
+    </div>
   </section>
 
-  <section>
-    <h2>About</h2>
-    <p>
-      I’m Noah, an A&M Accounting grad and former Senior Accountant. Golden Leaf exists to give small business owners clarity —
-      <b>clear books, clear cash, clear decisions.</b>
-    </p>
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container">
+      <h2 class="reveal">Why Golden Leaf?</h2>
+      <p class="reveal">I’m Noah—A&M Accounting grad, 3+ years experience (1.5 as Senior Accountant). I help owners stop guessing and start deciding with clean books, real-time cash views, and tight monthly rhythms.</p>
+      <p class="reveal" style="margin-top:8px;color:#ffdca8">Not a CPA firm. We provide bookkeeping & controller services and partner with CPAs for tax.</p>
+    </div>
   </section>
 
-  <section>
-    <h2>FAQ</h2>
-    <p><b>Are you a CPA?</b> No, I provide bookkeeping & controller services and partner with CPAs for tax prep.</p>
-    <p><b>Do you work remote?</b> Yes, 100% remote with secure portals and 2FA.</p>
-    <p><b>What do you need from me?</b> Bank/CC access and 30 minutes a month.</p>
+  <!-- FAQ -->
+  <section class="container faq">
+    <h2 class="reveal">FAQ</h2>
+    <p class="q reveal">Are you a CPA?</p>
+    <p class="reveal">No—this is bookkeeping & fractional controller work. For tax prep, I coordinate with your CPA.</p>
+    <p class="q reveal" style="margin-top:10px">Do you work remote?</p>
+    <p class="reveal">Yes. Secure portal, 2FA everywhere, and an internal WISP for data protection.</p>
+    <p class="q reveal" style="margin-top:10px">What do you need from me?</p>
+    <p class="reveal">Read-only bank access, statements, and 30 minutes a month for review.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="container">
+    <h2 class="reveal">Let’s Get You Cash-Clear</h2>
+    <p class="reveal">Grab a time that works for you or send a note—responses within 1 business day.</p>
+    <div class="cta-row reveal">
+      <a class="btn btn-primary" href="https://calendly.com/yourlink/30min" target="_blank" rel="noopener">Book a Discovery Call</a>
+      <a class="btn btn-ghost" href="mailto:intake@goldenleaffinancialllc.com">Email intake@goldenleaffinancialllc.com</a>
+    </div>
   </section>
 
   <footer>
-    Golden Leaf Financial LLC • intake@goldenleaffinancialllc.com
+    <div class="container">© <span id="y"></span> Golden Leaf Financial LLC • www.goldenleaffinancialllc.com</div>
   </footer>
+
+  <script>
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // simple reveal-on-scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+      });
+    }, {threshold: .16});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
 </body>
 </html>
