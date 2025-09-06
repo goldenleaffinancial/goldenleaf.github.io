@@ -18,7 +18,7 @@ ul{margin:0;padding-left:20px}
 li{margin:6px 0}
 .gold{color:var(--gold)}
 
-/* Sections + anchor offset (iOS safe area) */
+/* Sections + iOS-safe anchor offset */
 section{
   padding:96px 0 88px;
   scroll-margin-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 20px);
@@ -40,58 +40,48 @@ section + section{border-top:1px solid rgba(212,175,55,.14);padding-top:116px}
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* brand left, links right */
-  gap: 8px;
+  justify-content: space-between; /* brand left, button right */
+  gap: 12px;
 }
 
-/* Brand link */
+/* Brand */
 .brand,.brand:link,.brand:visited{
   display:inline-flex; gap:10px; align-items:center; color:var(--text);
   text-decoration:none; font-weight:700; letter-spacing:.3px;
-  max-width:44vw; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  max-width:56vw; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 .leaf{width:22px;height:22px;border-radius:6px;background:conic-gradient(from 210deg, var(--gold), var(--gold-2), var(--gold));box-shadow:0 0 0 1px rgba(212,175,55,.25)}
 
-/* Links strip (scrollable on mobile) */
-.nav-links{
-  display:flex; gap:10px; white-space:nowrap;
-  overflow-x:auto; -webkit-overflow-scrolling:touch;
-  scrollbar-width:none; max-width:56vw;
-}
-.nav-links::-webkit-scrollbar{display:none}
-
-/* Nav buttons — consistent size; lock visited color */
-.nav a.cta,
-.nav a.cta:link,
-.nav a.cta:visited{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  line-height:1;
-  color:#ffe9a8;
-  text-decoration:none;
-  padding:9px 14px;
-  border:1px solid var(--gold);
-  border-radius:10px;
+/* Menu button */
+.menu-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 14px; border:1px solid var(--gold); border-radius:12px;
   background:linear-gradient(180deg, rgba(212,175,55,.14), rgba(212,175,55,.04));
-  transition:background .2s, box-shadow .2s, color .2s;
+  color:#ffe9a8; font-weight:700; letter-spacing:.2px; cursor:pointer;
+  box-shadow:var(--shadow); transition:background .2s, box-shadow .2s, color .2s, transform .08s ease;
 }
-.nav a.cta:hover{
-  background:linear-gradient(180deg, var(--gold), #b99426);
-  color:#111;
-  box-shadow:0 8px 22px rgba(212,175,55,.22);
+.menu-btn:hover{ background:linear-gradient(180deg, var(--gold), #b99426); color:#111; box-shadow:0 8px 22px rgba(212,175,55,.22) }
+.menu-btn:active{ transform:scale(.98) }
+.menu-btn:focus-visible{ outline:2px solid rgba(212,175,55,.6); outline-offset:2px }
+.menu-btn .chev{ width:16px; height:16px }
+
+/* Dropdown panel */
+.menu-panel{
+  position:absolute; right:22px; top:calc(var(--nav-h) - 6px);
+  background:linear-gradient(180deg,#141414,#0f0f0f);
+  border:1px solid rgba(212,175,55,.28);
+  border-radius:14px; box-shadow:0 20px 50px rgba(0,0,0,.5);
+  width: min(260px, 86vw); padding:8px;
+  opacity:0; transform:translateY(-8px); pointer-events:none;
+  transition:opacity .16s ease, transform .16s ease;
 }
-.nav a.cta.active,
-.nav a.cta[aria-current="page"]{
-  background:linear-gradient(180deg, var(--gold), #b99426);
-  color:#111;
-  box-shadow:0 8px 22px rgba(212,175,55,.22);
+.menu-panel.open{ opacity:1; transform:translateY(0); pointer-events:auto }
+.menu-item{
+  display:flex; align-items:center; gap:10px;
+  padding:12px 12px; border-radius:10px; color:#ffe9a8; text-decoration:none;
 }
-.nav a.cta:focus-visible,.brand:focus-visible{
-  outline:2px solid rgba(212,175,55,.6);
-  outline-offset:2px;
-  border-radius:10px;
-}
+.menu-item:hover{ background:rgba(212,175,55,.12); color:#fff }
+.menu-item[aria-current="page"]{ background:linear-gradient(180deg, var(--gold), #b99426); color:#111 }
 
 /* ---------- HERO ---------- */
 .hero{border-bottom:1px solid rgba(212,175,55,.16);
@@ -145,9 +135,7 @@ footer{border-top:1px solid rgba(212,175,55,.18);background:#0a0a0a;padding:26px
 /* ---------- Mobile tweaks ---------- */
 @media (max-width:540px){
   :root{ --nav-h:64px; }
-  .nav a.cta,.nav a.cta:link,.nav a.cta:visited{ font-size:15px; padding:8px 12px; border-radius:10px }
   .brand span{ font-size:16px } .leaf{ width:18px; height:18px; border-radius:5px }
-  .nav-links{ max-width:64vw }
   .hero .container{ padding:92px 16px 84px }
 }
 
