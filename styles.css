@@ -4,10 +4,19 @@
   --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35); --max:1100px;
   --nav-h:72px;
 }
+
+/* Base */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+body{margin:0;background:var(--bg);color:var(--text);
+     font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
 .container{max-width:var(--max);margin:0 auto;padding:0 22px}
+h1,h2,h3{margin:0 0 12px;line-height:1.15}
+h2{margin-top:6px;margin-bottom:12px}
+p{margin:0 0 12px;color:var(--muted)}
+ul{margin:0;padding-left:20px}
+li{margin:6px 0}
+.gold{color:var(--gold)}
 
 /* Sections + anchor offset (iOS safe area) */
 section{
@@ -15,11 +24,6 @@ section{
   scroll-margin-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 20px);
 }
 section + section{border-top:1px solid rgba(212,175,55,.14);padding-top:116px}
-h1,h2,h3{margin:0 0 12px;line-height:1.15}
-h2{margin-top:6px;margin-bottom:12px}
-p{margin:0 0 12px;color:var(--muted)}
-ul{margin:0;padding-left:20px}
-li{margin:6px 0}
 
 /* ---------- NAV ---------- */
 .nav{
@@ -39,7 +43,8 @@ li{margin:6px 0}
   justify-content: space-between; /* brand left, links right */
   gap: 8px;
 }
-/* Brand link: single line + ellipsis */
+
+/* Brand link */
 .brand,.brand:link,.brand:visited{
   display:inline-flex; gap:10px; align-items:center; color:var(--text);
   text-decoration:none; font-weight:700; letter-spacing:.3px;
@@ -47,7 +52,7 @@ li{margin:6px 0}
 }
 .leaf{width:22px;height:22px;border-radius:6px;background:conic-gradient(from 210deg, var(--gold), var(--gold-2), var(--gold));box-shadow:0 0 0 1px rgba(212,175,55,.25)}
 
-/* The links strip (only this scrolls on mobile) */
+/* Links strip (scrollable on mobile) */
 .nav-links{
   display:flex; gap:10px; white-space:nowrap;
   overflow-x:auto; -webkit-overflow-scrolling:touch;
@@ -55,16 +60,38 @@ li{margin:6px 0}
 }
 .nav-links::-webkit-scrollbar{display:none}
 
-/* Nav buttons (lock visited color) */
-.nav a.cta,.nav a.cta:link,.nav a.cta:visited{
-  color:#ffe9a8; text-decoration:none; padding:9px 14px;
-  border:1px solid var(--gold); border-radius:10px;
+/* Nav buttons — consistent size; lock visited color */
+.nav a.cta,
+.nav a.cta:link,
+.nav a.cta:visited{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+  color:#ffe9a8;
+  text-decoration:none;
+  padding:9px 14px;
+  border:1px solid var(--gold);
+  border-radius:10px;
   background:linear-gradient(180deg, rgba(212,175,55,.14), rgba(212,175,55,.04));
-  transition:.2s;
+  transition:background .2s, box-shadow .2s, color .2s;
 }
-.nav a.cta:hover{ background:linear-gradient(180deg, var(--gold), #b99426); color:#111; transform:translateY(-1px); box-shadow:0 8px 22px rgba(212,175,55,.22) }
-.nav a.cta.active{ background:linear-gradient(180deg, var(--gold), #b99426); color:#111 }
-.nav a.cta:focus-visible,.brand:focus-visible{ outline:2px solid rgba(212,175,55,.6); outline-offset:2px; border-radius:10px }
+.nav a.cta:hover{
+  background:linear-gradient(180deg, var(--gold), #b99426);
+  color:#111;
+  box-shadow:0 8px 22px rgba(212,175,55,.22);
+}
+.nav a.cta.active,
+.nav a.cta[aria-current="page"]{
+  background:linear-gradient(180deg, var(--gold), #b99426);
+  color:#111;
+  box-shadow:0 8px 22px rgba(212,175,55,.22);
+}
+.nav a.cta:focus-visible,.brand:focus-visible{
+  outline:2px solid rgba(212,175,55,.6);
+  outline-offset:2px;
+  border-radius:10px;
+}
 
 /* ---------- HERO ---------- */
 .hero{border-bottom:1px solid rgba(212,175,55,.16);
@@ -79,13 +106,15 @@ li{margin:6px 0}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
 .btn{padding:12px 18px;border-radius:12px;font-weight:700;letter-spacing:.2px;cursor:pointer;border:0;transition:.22s;box-shadow:var(--shadow)}
 .btn-primary{background:linear-gradient(180deg, var(--gold), #b99426);color:#111}
-.btn-primary:hover{filter:saturate(105%) brightness(1.03);transform:translateY(-1px)}
+.btn-primary:hover{filter:saturate(105%) brightness(1.03)}
 .btn-ghost{background:rgba(217,119,6,.14);color:#ffdca8;border:1px solid rgba(217,119,6,.34)}
-.btn-ghost:hover{background:rgba(217,119,6,.22);transform:translateY(-1px)}
+.btn-ghost:hover{background:rgba(217,119,6,.22)}
 
 /* ---------- GRID & CARDS ---------- */
 .grid{display:grid;gap:20px}
+.grid.onecol{grid-template-columns:1fr}
 @media(min-width:860px){.grid{grid-template-columns:repeat(3,1fr)}}
+
 .card,.card:link,.card:visited{
   display:block; color:inherit; text-decoration:none;
   background:linear-gradient(180deg, #141414, #0f0f0f);
@@ -99,16 +128,19 @@ li{margin:6px 0}
   filter:blur(20px);opacity:.5;z-index:-1}
 .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.28);color:#ffe9a8;font-size:.8rem;margin-bottom:8px}
 .price{font-size:1.7rem;color:var(--gold);font-weight:800;margin:6px 0 12px}
+.per{font-size:.9rem;color:#ffe9a8}
 
 /* ---------- PROCESS / FOOTER / REVEAL ---------- */
 .step{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;
       border:1.5px solid rgba(212,175,55,.18);border-radius:14px;background:linear-gradient(180deg,#121212,#0f0f0f)}
-.num{min-width:34px;height:34px;border-radius:8px;background:linear-gradient(180deg, var(--orange), #a95f04);display:grid;place-items:center;font-weight:800}
+.num{min-width:34px;height:34px;border-radius:8px;background:linear-gradient(180deg, var(--orange), #a95f04);display:grid;place-items:center;font-weight:800;color:#111}
+.about{background:linear-gradient(180deg,#101010,#0b0b0b)}
+.note{margin-top:8px;color:#ffdca8}
 footer{border-top:1px solid rgba(212,175,55,.18);background:#0a0a0a;padding:26px 0;color:#cfcfcf}
+
+/* Reveal animation */
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
 .reveal.show{opacity:1;transform:none}
-.breadcrumbs{color:#ffe9a8;font-size:.9rem;margin-bottom:8px}
-.breadcrumbs a{color:#ffe9a8;text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- Mobile tweaks ---------- */
 @media (max-width:540px){
