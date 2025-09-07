@@ -19,11 +19,14 @@ li{margin:6px 0}
 .gold{color:var(--gold)}
 
 /* Sections + iOS-safe anchor offset */
-section{
-  padding:96px 0 88px;
+section {
+  padding: 80px 0 80px;  /* ⬅ tighter but even */
   scroll-margin-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 20px);
 }
-section + section{border-top:1px solid rgba(212,175,55,.14);padding-top:116px}
+section + section {
+  border-top: 1px solid rgba(212,175,55,.14);
+  padding-top: 100px;   /* ⬅ more breathing room between blocks */
+}
 
 /* ---------- NAV ---------- */
 .nav{
@@ -98,7 +101,7 @@ section + section{border-top:1px solid rgba(212,175,55,.14);padding-top:116px}
     radial-gradient(60rem 60rem at -10% -20%, rgba(212,175,55,.14), transparent 50%),
     radial-gradient(50rem 50rem at 110% -10%, rgba(217,119,6,.18), transparent 55%),
     linear-gradient(180deg, #0b0b0b 0%, #111 100%);}
-.hero .container{display:grid;gap:16px;padding:100px 22px 92px}
+.hero .container{display:grid;gap:14px;padding:72px 22px 64px}
 .kicker{color:var(--gold);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.76rem}
 .hero h1{font-size:clamp(32px, 5vw, 56px)}
 .hero p{font-size:1.08rem;max-width:800px}
