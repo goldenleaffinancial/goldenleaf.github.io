@@ -157,3 +157,55 @@ footer{
 @supports (-webkit-touch-callout:none){
   html{ -webkit-text-size-adjust:100%; }
 }
+
+/* ===== spacing polish (overrides) ===== */
+:root{
+  --hero-top: 40px;          /* how close hero sits under nav */
+  --hero-bottom: 52px;       /* room under hero */
+  --section-top: 64px;       /* section top padding */
+  --section-bottom: 96px;    /* section bottom padding */
+  --cards-gap: 32px;         /* space between plan cards */
+}
+
+.hero .container{
+  padding: var(--hero-top) 22px var(--hero-bottom) !important;
+  gap: 10px !important;
+}
+.hero .kicker{ margin-top: 0 !important; }
+.hero h1{ margin-top: 2px !important; }
+
+section{
+  padding: var(--section-top) 0 var(--section-bottom) !important;
+}
+
+/* first section after hero gets a touch more separation */
+header.hero + section{
+  padding-top: calc(var(--section-top) + 8px) !important;
+}
+
+/* Services area: let the grid/cards breathe */
+#services .grid{
+  gap: var(--cards-gap) !important;
+  margin-top: 18px !important;
+}
+#services .card{
+  padding: 28px !important;
+}
+#services h2{ margin-bottom: 14px !important; }
+
+/* create a bigger gap between stacked sections */
+section + section{
+  padding-top: calc(var(--section-top) + 28px) !important;
+}
+
+/* mobile tweaks */
+@media (max-width: 540px){
+  :root{
+    --hero-top: 32px;
+    --hero-bottom: 44px;
+    --section-top: 56px;
+    --section-bottom: 80px;
+    --cards-gap: 22px;
+  }
+}
+
