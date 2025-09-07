@@ -286,4 +286,16 @@ section + section{
   100% { background-position: -200% center; }
 }
 
+.stars svg.star {
+  width: 22px;
+  height: 22px;
+}
 
+@keyframes shimmerGradient {
+  0%   { x1: 0%; x2: 200%; }
+  100% { x1: -200%; x2: 0%; }
+}
+
+#shine {
+  animation: shimmerGradient 4s linear infinite;
+}
