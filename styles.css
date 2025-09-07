@@ -137,6 +137,15 @@ section + section{border-top:1px solid rgba(212,175,55,.14);padding-top:116px}
 .note{margin-top:8px;color:#ffdca8}
 footer{border-top:1px solid rgba(212,175,55,.18);background:#0a0a0a;padding:26px 0;color:#cfcfcf}
 
+footer {
+  border-top: 1px solid rgba(212,175,55,.18);
+  background: #0a0a0a;
+  padding: 26px 0;
+  color: #cfcfcf;
+  text-align: center;   /* 👈 centers the text */
+}
+
+
 /* Reveal animation */
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
 .reveal.show{opacity:1;transform:none}
