@@ -137,6 +137,7 @@ footer{border-top:1px solid rgba(212,175,55,.18);background:#0a0a0a;padding:26px
   :root{ --nav-h:64px; }
   .brand span{ font-size:16px } .leaf{ width:18px; height:18px; border-radius:5px }
   .hero .container{ padding:92px 16px 84px }
+  .grid{grid-template-columns:1fr}
 }
 
 /* Stop iOS auto-zoom */

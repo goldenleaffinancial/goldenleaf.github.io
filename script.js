@@ -1,58 +1,45 @@
-// === Footer Year ===
-document.getElementById('y').textContent = new Date().getFullYear();
+(() => {
+  const byId = (id) => document.getElementById(id);
+  const menuBtn = byId('menuButton');
+  const menu = byId('mainMenu');
 
-// === Reveal-on-scroll ===
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.16 });
-document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  // Toggle dropdown
+  if (menuBtn && menu) {
+    menuBtn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+        menu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
-// === Dropdown menu ===
-const btn = document.getElementById('menuButton');
-const panel = document.getElementById('mainMenu');
-
-function openMenu() {
-  panel.classList.add('open');
-  btn.setAttribute('aria-expanded', 'true');
-}
-function closeMenu() {
-  panel.classList.remove('open');
-  btn.setAttribute('aria-expanded', 'false');
-}
-function toggleMenu() {
-  const expanded = btn.getAttribute('aria-expanded') === 'true';
-  expanded ? closeMenu() : openMenu();
-}
-
-if (btn && panel) {
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu();
-  });
-
-  document.addEventListener('click', (e) => {
-    if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== btn) {
-      closeMenu();
+  // Mark current page in menu
+  const path = location.pathname.replace(/\/index\.html$/, '/');
+  document.querySelectorAll('.menu-item').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href) return;
+    const url = new URL(href, location.origin);
+    if (path.endsWith('/') && url.pathname.endsWith('/index.html')) {
+      a.setAttribute('aria-current', 'page');
+    } else if (url.pathname === path || url.pathname === location.pathname) {
+      a.setAttribute('aria-current', 'page');
     }
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && panel.classList.contains('open')) {
-      closeMenu();
-    }
-  });
-}
+  // IntersectionObserver reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// === Highlight active menu link ===
-(function markActive() {
-  const path = location.pathname.replace(/\/+$/, '') || '/';
-  document.querySelectorAll('.menu-item').forEach((a) => {
-    const route = (a.getAttribute('data-route') || a.getAttribute('href') || '').replace(/\/+$/, '') || '/';
-    if (route === path) a.setAttribute('aria-current', 'page');
-  });
+  // Footer year
+  const y = document.getElementById('y') || document.querySelector('span[data-year]');
+  if (y) y.textContent = new Date().getFullYear();
 })();
