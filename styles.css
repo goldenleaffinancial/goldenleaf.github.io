@@ -38,19 +38,11 @@ section + section{border-top:1px solid rgba(212,175,55,.14);padding-top:116px}
 }
 .nav-inner{
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
   justify-content: space-between; /* brand left, button right */
   gap: 12px;
 }
-.brand {
-  justify-self: center;
-}
-.menu-btn {
-  justify-self: end;
-}
-
 /* Brand */
 .brand,.brand:link,.brand:visited{
   display:inline-flex; gap:10px; align-items:center; color:var(--text);
