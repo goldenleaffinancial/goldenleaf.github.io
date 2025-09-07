@@ -63,19 +63,27 @@ section + section{
 .menu-btn .chev{ width:16px; height:16px }
 
 /* Dropdown panel (currently centered-ish; bump left % if needed) */
-.menu-panel{
-  position:absolute;
-  top:calc(var(--nav-h) - 6px);
-  left:70%;
-  transform:translateX(-50%) translateY(-8px);
-  background:linear-gradient(180deg,#141414,#0f0f0f);
-  border:1px solid rgba(212,175,55,.28);
-  border-radius:14px; box-shadow:0 20px 50px rgba(0,0,0,.5);
-  width:min(260px,86vw); padding:8px;
-  opacity:0; pointer-events:none;
-  transition:opacity .16s ease, transform .16s ease;
+.menu-panel {
+  position: absolute;
+  top: 100%;              /* 👈 drops directly below button */
+  right: 0;               /* 👈 aligns right edge with button */
+  margin-top: 6px;        /* little gap */
+  background: linear-gradient(180deg,#141414,#0f0f0f);
+  border: 1px solid rgba(212,175,55,.28);
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.5);
+  width: min(260px, 86vw);
+  padding: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity .16s ease, transform .16s ease;
 }
-.menu-panel.open{ opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto }
+.menu-panel.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 .menu-item{
   display:flex; align-items:center; gap:10px;
   padding:12px 12px; border-radius:10px; color:#ffe9a8; text-decoration:none;
