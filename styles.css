@@ -254,5 +254,18 @@ section + section{
   .voucher-form{ gap:8px }
 }
 
+.rating-wrap {
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin-top:8px;
+}
+.stars { display:inline-flex; gap:3px; }
+.star {
+  width:20px; height:20px; display:inline-block;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>') no-repeat center / contain;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>') no-repeat center / contain;
+  background: rgba(212,175,55,.28);
+}
+.star.on { background: linear-gradient(180deg, var(--gold), #b99426); }
+.avg-label { color:#ffe9a8; font-weight:700; }
 
 
