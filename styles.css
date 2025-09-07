@@ -219,4 +219,40 @@ section + section{
 
 #contact h2 { margin-bottom: 10px; }
 
+/* Voucher */
+#voucher { border-top: 1px solid rgba(212,175,55,.14); }
+.voucher-form{
+  display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;
+}
+.voucher-form input{
+  flex:1 1 260px; min-width:220px;
+  padding:12px 14px; border-radius:12px; border:1px solid rgba(212,175,55,.28);
+  background:linear-gradient(180deg,#141414,#0f0f0f); color:#fff;
+  box-shadow: var(--shadow);
+}
+.voucher-form input::placeholder{ color:#c9c9c9 }
+.voucher-msg{ margin-top:10px; font-weight:600 }
+.voucher-msg.ok{ color:#b7ffbf }
+.voucher-msg.err{ color:#ffb7b7 }
+
+/* Sitewide voucher banner */
+.voucher-banner{
+  position:sticky; top:var(--nav-h); z-index:40;
+  background:linear-gradient(180deg, rgba(20,20,20,.96), #101010);
+  border-bottom:1px solid rgba(212,175,55,.18);
+  color:#ffe9a8;
+}
+.voucher-banner .inner{
+  max-width:var(--max); margin:0 auto; padding:8px 22px; display:flex; gap:8px; align-items:center; justify-content:space-between;
+}
+.voucher-chip{
+  padding:6px 10px; border-radius:999px; border:1px solid rgba(212,175,55,.35);
+  background:rgba(212,175,55,.12); color:#ffe9a8; font-weight:700; letter-spacing:.2px;
+}
+.voucher-clear{ background:none; border:0; color:#ffdca8; text-decoration:underline; cursor:pointer }
+@media (max-width:540px){
+  .voucher-form{ gap:8px }
+}
+
+
 
